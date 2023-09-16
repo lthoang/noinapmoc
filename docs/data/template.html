@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col-5">
+    <figure style="text-align: center">
+      <h5>Recommendation item:
+        <a href='${recommended["title"] ? "https://www.amazon.com/dp/" + explanation["iid"] : "https://www.yelp.com/biz/" + explanation["iid"]}'
+          target="_blank" data-bs-toggle="tooltip" title="Click to view item page">${explanation['iid']}</a>
+      </h5>
+      <figcaption style="font-size: 0.8rem;">${recommended['title'] ? recommended['title'] : recommended['name']}
+      </figcaption>
+      <img src="${recommended['imUrl'] ? recommended['imUrl'] : './data/placeholder-image.png'}"
+        style="margin-bottom: 1rem; max-width: 50%;" alt="">
+    </figure>
+  </div>
+  <div class="col-2"></div>
+  <div class="col-5">
+    <figure style="text-align: center">
+      <h5>Reference item: <a
+          href='${reference["title"] ? "https://www.amazon.com/dp/" + explanation["jid"] : "https://www.yelp.com/biz/" + explanation["jid"]}'
+          target="_blank" data-bs-toggle="tooltip" title="Click to view item page">${explanation["jid"]}</a>
+      </h5>
+      <figcaption style="font-size: 0.8rem;">${reference['title'] ? reference['title'] : reference['name']}</figcaption>
+      <img src="${reference['imUrl'] ? reference['imUrl'] : './data/placeholder-image.png'}"
+        style="margin-bottom: 1rem; max-width: 50%;" alt="">
+    </figure>
+  </div>
+</div>
+<div class="row">
+  <div class="col" style="text-align: center">
+    <h4>Explanation</h4>
+    <p style="border: solid">${explanation["explanation"].length > 1 ? explanation["explanation"][0] + ". <br />" +
+      explanation["explanation"][1] + "." : explanation["explanation"]}</p>
+  </div>
+</div><br>
+<div class="row">
+  <table class="table">
+    <tbody>
+      <tr>
+        <th scope="row">Common aspects</th>
+        <td>${ explanation["gt_common_aspects"]}</td>
+      </tr>
+      <tr>
+        <th scope="row">i aspects</th>
+        <td>${ explanation["gt_i_aspect_opinions"] ? Object.keys(explanation["gt_i_aspect_opinions"]) : ''}</td>
+      </tr>
+      <tr>
+        <th scope="row">j aspects</th>
+        <td>${ explanation["gt_j_aspect_opinions"] ? Object.keys(explanation["gt_j_aspect_opinions"]) : ''}</td>
+      </tr>
+      <tr>
+        <th scope="row">better scores</th>
+        <td>${explanation["aspect_scores"] ? explanation["aspect_scores"]["better"]: ''}</td>
+      </tr>
+      <tr>
+        <th scope="row">worse scores</th>
+        <td>${explanation["aspect_scores"] ? explanation["aspect_scores"]["worse"]: ''}</td>
+      </tr>
+      <tr>
+        <th scope="row">i_better_opinions</th>
+        <td>${explanation["i_better_aspect_opinions"]}</td>
+      </tr>
+      <tr>
+        <th scope="row">j_better_opinions</th>
+        <td>${explanation["j_better_aspect_opinions"]}</td>
+      </tr>
+      <tr>
+        <th scope="row">i_worse_opinions</th>
+        <td>${explanation["i_worse_aspect_opinions"]}</td>
+      </tr>
+      <tr>
+        <th scope="row">j_worse_opinions</th>
+        <td>${explanation["j_worse_aspect_opinions"]}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
